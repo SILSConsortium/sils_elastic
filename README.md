@@ -15,7 +15,7 @@ There's also the offical documentation, which is excellent, for all three found 
 https://www.elastic.co/guide/index.html
 
 
-#Getting Started / Backfilling a large historic ILS dataset into Elasticsearch
+# Getting Started / Backfilling a large historic ILS dataset into Elasticsearch
 To get started you probably have a SQL query that returns interesting timestamped data, like checkouts.  Since this data can go back years and years there can be gigabytes of data returned, so it's easiest to just chunk the results of a large historic query into a set of files and then read those files into Elasticsearch using Logstash's file input plugin.  This is what is done in the example logstash config included here.
 
 You can start with as much or as little data as you want, this is determined by how many rows are returned by your SQL query.  The file chunker just formats each row returned as JSON, and writes one row per line, 100,000 rows per file.  You could start with a SQL query that returns one month of data to get started.
